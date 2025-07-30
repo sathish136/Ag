@@ -59,17 +59,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const data = insertApplicationUsageSchema.parse(req.body);
       const result = await storage.insertApplicationUsage(data);
       console.log("Successfully inserted app usage:", result);
-      
-      // Broadcast real-time update
-      const update = {
-        type: 'update',
-        data: {
-          stats: await storage.getDashboardStats(),
-          activity: await storage.getRecentActivity(10)
-        }
-      };
-      broadcastToClients(update);
-      
       res.json(result);
     } catch (error) {
       console.error("Error logging application usage:", error);
@@ -106,12 +95,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Clipboard endpoints
   app.post('/api/clipboard', async (req, res) => {
     try {
+      console.log("Received clipboard data:", JSON.stringify(req.body, null, 2));
       const data = insertClipboardActivitySchema.parse(req.body);
       const result = await storage.insertClipboardActivity(data);
+      console.log("Successfully inserted clipboard:", result);
       res.json(result);
     } catch (error) {
       console.error("Error logging clipboard activity:", error);
-      res.status(400).json({ message: "Invalid clipboard data" });
+      if (error instanceof Error) {
+        console.error("Error details:", error.message);
+      }
+      res.status(400).json({ message: "Invalid clipboard data", error: error instanceof Error ? error.message : "Unknown error" });
     }
   });
 
@@ -130,12 +124,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Communication endpoints
   app.post('/api/communication', async (req, res) => {
     try {
+      console.log("Received communication data:", JSON.stringify(req.body, null, 2));
       const data = insertCommunicationActivitySchema.parse(req.body);
       const result = await storage.insertCommunicationActivity(data);
+      console.log("Successfully inserted communication:", result);
       res.json(result);
     } catch (error) {
       console.error("Error logging communication activity:", error);
-      res.status(400).json({ message: "Invalid communication data" });
+      if (error instanceof Error) {
+        console.error("Error details:", error.message);
+      }
+      res.status(400).json({ message: "Invalid communication data", error: error instanceof Error ? error.message : "Unknown error" });
     }
   });
 
@@ -158,17 +157,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const data = insertFileAccessActivitySchema.parse(req.body);
       const result = await storage.insertFileAccessActivity(data);
       console.log("Successfully inserted file access:", result);
-      
-      // Broadcast real-time update
-      const update = {
-        type: 'update',
-        data: {
-          stats: await storage.getDashboardStats(),
-          activity: await storage.getRecentActivity(10)
-        }
-      };
-      broadcastToClients(update);
-      
       res.json(result);
     } catch (error) {
       console.error("Error logging file access:", error);
@@ -198,17 +186,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const data = insertKeystrokeActivitySchema.parse(req.body);
       const result = await storage.insertKeystrokeActivity(data);
       console.log("Successfully inserted keystroke:", result);
-      
-      // Broadcast real-time update
-      const update = {
-        type: 'update',
-        data: {
-          stats: await storage.getDashboardStats(),
-          activity: await storage.getRecentActivity(10)
-        }
-      };
-      broadcastToClients(update);
-      
       res.json(result);
     } catch (error) {
       console.error("Error logging keystrokes:", error);
@@ -234,12 +211,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Network endpoints
   app.post('/api/network', async (req, res) => {
     try {
+      console.log("Received network data:", JSON.stringify(req.body, null, 2));
       const data = insertNetworkActivitySchema.parse(req.body);
       const result = await storage.insertNetworkActivity(data);
+      console.log("Successfully inserted network:", result);
       res.json(result);
     } catch (error) {
       console.error("Error logging network activity:", error);
-      res.status(400).json({ message: "Invalid network data" });
+      if (error instanceof Error) {
+        console.error("Error details:", error.message);
+      }
+      res.status(400).json({ message: "Invalid network data", error: error instanceof Error ? error.message : "Unknown error" });
     }
   });
 

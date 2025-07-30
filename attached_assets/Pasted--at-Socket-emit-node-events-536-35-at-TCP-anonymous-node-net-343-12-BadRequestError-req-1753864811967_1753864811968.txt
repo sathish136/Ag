@@ -1,0 +1,91 @@
+ at Socket.emit (node:events:536:35)
+    at TCP.<anonymous> (node:net:343:12)
+BadRequestError: request aborted
+    at IncomingMessage.onAborted (/home/runner/workspace/node_modules/raw-body/index.js:245:10)
+    at IncomingMessage.emit (node:events:524:28)
+    at IncomingMessage._destroy (node:_http_incoming:221:10)
+    at _destroy (node:internal/streams/destroy:121:10)
+    at IncomingMessage.destroy (node:internal/streams/destroy:83:5)
+    at abortIncoming (node:_http_server:796:9)
+    at socketOnClose (node:_http_server:790:3)
+    at Socket.emit (node:events:536:35)
+    at TCP.<anonymous> (node:net:343:12)
+BadRequestError: request aborted
+    at IncomingMessage.onAborted (/home/runner/workspace/node_modules/raw-body/index.js:245:10)
+    at IncomingMessage.emit (node:events:524:28)
+    at IncomingMessage._destroy (node:_http_incoming:221:10)
+    at _destroy (node:internal/streams/destroy:121:10)
+    at IncomingMessage.destroy (node:internal/streams/destroy:83:5)
+    at abortIncoming (node:_http_server:796:9)
+    at socketOnClose (node:_http_server:790:3)
+    at Socket.emit (node:events:536:35)
+    at TCP.<anonymous> (node:net:343:12)
+BadRequestError: request aborted
+    at IncomingMessage.onAborted (/home/runner/workspace/node_modules/raw-body/index.js:245:10)
+    at IncomingMessage.emit (node:events:524:28)
+    at IncomingMessage._destroy (node:_http_incoming:221:10)
+    at _destroy (node:internal/streams/destroy:121:10)
+    at IncomingMessage.destroy (node:internal/streams/destroy:83:5)
+    at abortIncoming (node:_http_server:796:9)
+    at socketOnClose (node:_http_server:790:3)
+    at Socket.emit (node:events:536:35)
+    at TCP.<anonymous> (node:net:343:12)
+BadRequestError: request aborted
+    at IncomingMessage.onAborted (/home/runner/workspace/node_modules/raw-body/index.js:245:10)
+    at IncomingMessage.emit (node:events:524:28)
+    at IncomingMessage._destroy (node:_http_incoming:221:10)
+    at _destroy (node:internal/streams/destroy:121:10)
+    at IncomingMessage.destroy (node:internal/streams/destroy:83:5)
+    at abortIncoming (node:_http_server:796:9)
+    at socketOnClose (node:_http_server:790:3)
+    at Socket.emit (node:events:536:35)
+    at TCP.<anonymous> (node:net:343:12)
+Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+
+WebSocket client connected
+8:39:04 AM [express] GET /api/auth/user 401 in 1ms :: {"message":"Unauthorized"}
+WebSocket client connected
+Received WebSocket message: { type: 'subscribe' }
+Received WebSocket message: { type: 'subscribe' }
+8:39:04 AM [express] GET /api/auth/user 401 in 1ms :: {"message":"Unauthorized"}
+WebSocket client connected
+WebSocket client connected
+Received WebSocket message: { type: 'subscribe' }
+Received WebSocket message: { type: 'subscribe' }
+8:39:04 AM [express] GET /api/auth/user 401 in 1ms :: {"message":"Unauthorized"}
+WebSocket client connected
+WebSocket client connected
+Received WebSocket message: { type: 'subscribe' }
+Received WebSocket message: { type: 'subscribe' }
+8:39:04 AM [express] GET /api/auth/user 401 in 1ms :: {"message":"Unauthorized"}
+WebSocket client connected
+WebSocket client connected
+Received WebSocket message: { type: 'subscribe' }
+Received WebSocket message: { type: 'subscribe' }
+8:39:04 AM [express] GET /api/auth/user 401 in 1ms :: {"message":"Unauthorized"}
+WebSocket client connected
+8:39:04 AM [express] GET /api/appusage/top 200 in 302ms :: [{"applicationName":"Google Chrome","tota…
+8:39:04 AM [express] GET /api/sessions 200 in 316ms :: []
+WebSocket client connected
+Received WebSocket message: { type: 'subscribe' }
+Received WebSocket message: { type: 'subscribe' }
+8:39:04 AM [express] GET /api/network/active 200 in 329ms :: []
+8:39:04 AM [express] GET /api/auth/user 401 in 1ms :: {"message":"Unauthorized"}
+WebSocket client connected
+WebSocket client connected
+Received WebSocket message: { type: 'subscribe' }
+Received WebSocket message: { type: 'subscribe' }
+8:39:04 AM [express] GET /api/auth/user 401 in 1ms :: {"message":"Unauthorized"}
+WebSocket client connected
+WebSocket client connected
+Received WebSocket message: { type: 'subscribe' }
+Received WebSocket message: { type: 'subscribe' }
+8:39:05 AM [express] GET /api/auth/user 401 in 1ms :: {"message":"Unauthorized"}
+WebSocket client connected
+WebSocket client connected
+Received WebSocket message: { type: 'subscribe' }
+Received WebSocket message: { type: 'subscribe' }
+8:39:05 AM [express] GET /api/auth/user 401 in 1ms :: {"message":"Unauthorized"}
