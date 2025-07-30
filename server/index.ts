@@ -18,6 +18,11 @@ app.use((req, res, next) => {
   const path = req.path;
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
+  // Log all incoming POST requests to monitor agent data
+  if (req.method === 'POST' && path.startsWith('/api/')) {
+    console.log(`[AGENT DATA] ${new Date().toISOString()} - ${req.method} ${path} from ${req.ip}`);
+  }
+
   const originalResJson = res.json;
   res.json = function (bodyJson, ...args) {
     capturedJsonResponse = bodyJson;

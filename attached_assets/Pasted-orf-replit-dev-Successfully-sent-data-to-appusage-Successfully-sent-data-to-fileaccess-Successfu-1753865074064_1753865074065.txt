@@ -1,0 +1,95 @@
+orf.replit.dev'
+Successfully sent data to appusage
+Successfully sent data to fileaccess
+Successfully sent data to webusage
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+LWin
+Successfully sent data to fileaccess
+R
+30-07-2025 14:12:26: Switched to 'SearchHost' - 'SearchHost'
+Successfully sent data to fileaccess
+E
+Successfully sent data to fileaccess
+Successfully sent data to keystrokes
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to keystrokes
+Successfully sent data to fileaccess
+Successfully sent data to appusage
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to keystrokes
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to webusage
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+Successfully sent data to fileaccess
+30-07-2025 14:12:28: Switched to 'mstsc' - 'Remote Desktop Connection'
+NumPad1
+NumPad0
+Successfully sent data to appusage
+Decimal
+Successfully sent data to keystrokes
+NumPad1
+Successfully sent data to keystrokes
+30-07-2025 14:12:29: Switched to 'mstsc' - 'mstsc'
+NumPad5
+Successfully sent data to keystrokes
+Successfully sent data to keystrokes
+Decimal
+Successfully sent data to appusage
+NumPad5
+Successfully sent data to keystrokes
+Decimal
+Successfully sent data to keystrokes
+NumPad1
+Successfully sent data to network
+Successfully sent data to keystrokes
+NumPad3
+Successfully sent data to keystrokes
+Successfully sent data to keystrokes
+NumPad5
+Successfully sent data to keystrokes
