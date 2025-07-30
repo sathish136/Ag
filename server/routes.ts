@@ -59,6 +59,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const data = insertApplicationUsageSchema.parse(req.body);
       const result = await storage.insertApplicationUsage(data);
       console.log("Successfully inserted app usage:", result);
+      
+      // Broadcast real-time update
+      const update = {
+        type: 'update',
+        data: {
+          stats: await storage.getDashboardStats(),
+          activity: await storage.getRecentActivity(10)
+        }
+      };
+      broadcastToClients(update);
+      
       res.json(result);
     } catch (error) {
       console.error("Error logging application usage:", error);
@@ -147,6 +158,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const data = insertFileAccessActivitySchema.parse(req.body);
       const result = await storage.insertFileAccessActivity(data);
       console.log("Successfully inserted file access:", result);
+      
+      // Broadcast real-time update
+      const update = {
+        type: 'update',
+        data: {
+          stats: await storage.getDashboardStats(),
+          activity: await storage.getRecentActivity(10)
+        }
+      };
+      broadcastToClients(update);
+      
       res.json(result);
     } catch (error) {
       console.error("Error logging file access:", error);
@@ -176,6 +198,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const data = insertKeystrokeActivitySchema.parse(req.body);
       const result = await storage.insertKeystrokeActivity(data);
       console.log("Successfully inserted keystroke:", result);
+      
+      // Broadcast real-time update
+      const update = {
+        type: 'update',
+        data: {
+          stats: await storage.getDashboardStats(),
+          activity: await storage.getRecentActivity(10)
+        }
+      };
+      broadcastToClients(update);
+      
       res.json(result);
     } catch (error) {
       console.error("Error logging keystrokes:", error);

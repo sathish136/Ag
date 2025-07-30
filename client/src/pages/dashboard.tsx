@@ -19,10 +19,13 @@ export default function Dashboard() {
   const { toast } = useToast();
   const { isAuthenticated, isLoading } = useAuth();
   const { stats, activity, isConnected } = useWebSocket();
+  
+  // Check if we're on public monitor route
+  const isPublicMonitor = window.location.pathname === '/monitor';
 
-  // Redirect to home if not authenticated
+  // Only redirect for authenticated routes, not public monitor
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    if (!isPublicMonitor && !isLoading && !isAuthenticated) {
       toast({
         title: "Unauthorized",
         description: "You are logged out. Logging in again...",
@@ -33,7 +36,7 @@ export default function Dashboard() {
       }, 500);
       return;
     }
-  }, [isAuthenticated, isLoading, toast]);
+  }, [isAuthenticated, isLoading, toast, isPublicMonitor]);
 
   const { data: topApps, isLoading: appsLoading } = useQuery({
     queryKey: ["/api/appusage/top"],
@@ -45,7 +48,7 @@ export default function Dashboard() {
     retry: false,
   });
 
-  if (!isAuthenticated || isLoading) {
+  if (!isPublicMonitor && (!isAuthenticated || isLoading)) {
     return <div className="min-h-screen bg-slate-900 flex items-center justify-center">
       <div className="text-white">Loading...</div>
     </div>;
@@ -119,8 +122,8 @@ export default function Dashboard() {
                           <tr>
                             <td colSpan={3} className="text-center py-8 text-slate-400">Loading applications...</td>
                           </tr>
-                        ) : topApps && topApps.length > 0 ? (
-                          topApps.map((app, index) => (
+                        ) : topApps && Array.isArray(topApps) && topApps.length > 0 ? (
+                          topApps.map((app: any, index: number) => (
                             <tr key={index} className="border-b border-slate-600/30 hover:bg-slate-700/50">
                               <td className="py-3">
                                 <div className="flex items-center space-x-3">
@@ -183,8 +186,8 @@ export default function Dashboard() {
                           <tr>
                             <td colSpan={3} className="text-center py-8 text-slate-400">Loading network activity...</td>
                           </tr>
-                        ) : networkConnections && networkConnections.length > 0 ? (
-                          networkConnections.map((conn, index) => (
+                        ) : networkConnections && Array.isArray(networkConnections) && networkConnections.length > 0 ? (
+                          networkConnections.map((conn: any, index: number) => (
                             <tr key={index} className="border-b border-slate-600/30 hover:bg-slate-700/50">
                               <td className="py-3">
                                 <div>

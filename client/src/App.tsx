@@ -21,6 +21,17 @@ function Router() {
 
   return (
     <Switch>
+      {/* Public monitoring dashboard - no auth required */}
+      <Route path="/monitor" component={() => (
+        <div className="flex h-screen bg-slate-900">
+          <Sidebar />
+          <div className="flex-1 flex flex-col overflow-hidden">
+            <Dashboard />
+          </div>
+        </div>
+      )} />
+      
+      {/* Authenticated admin sections */}
       {isLoading || !isAuthenticated ? (
         <Route path="/" component={Landing} />
       ) : (
