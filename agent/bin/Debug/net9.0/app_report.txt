@@ -1,0 +1,6 @@
+--- App Usage Report ---
+Process Name                   | Window Title                                                 | Total Duration (s)  
+--------------------------------------------------------------------------------------------------------------------
+Windsurf                       | TeamSpy - Windsurf - ApplicationTracker.cs                   | 31                  
+explorer                       | explorer                                                     | 1                   
+--- End of Report ---
