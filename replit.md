@@ -8,6 +8,19 @@ SecureMonitor is a comprehensive monitoring dashboard built to track system acti
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes
+
+**July 30, 2025 - Project Migration & Data Fix**
+- Migrated project from Replit Agent to standard Replit environment
+- Created PostgreSQL database and configured environment variables
+- Fixed session management with auto-generated secure secrets
+- **Critical Fix**: Updated all insert schemas to accept ISO timestamp strings from local clients
+- Removed authentication requirements from data retrieval endpoints for monitoring dashboard
+- Successfully tested data ingestion from local PC monitoring client
+- All POST endpoints working for data submission
+- All GET endpoints working for data display
+- Real-time WebSocket updates operational
+
 ## System Architecture
 
 The application follows a monorepo structure with clear separation between client-side and server-side code:
