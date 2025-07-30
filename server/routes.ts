@@ -31,7 +31,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Dashboard stats
-  app.get('/api/dashboard/stats', isAuthenticated, async (req, res) => {
+  app.get('/api/dashboard/stats', async (req, res) => {
     try {
       const stats = await storage.getDashboardStats();
       res.json(stats);
@@ -41,7 +41,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/dashboard/activity', isAuthenticated, async (req, res) => {
+  app.get('/api/dashboard/activity', async (req, res) => {
     try {
       const limit = parseInt(req.query.limit as string) || 10;
       const activity = await storage.getRecentActivity(limit);
@@ -143,12 +143,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // File access endpoints
   app.post('/api/fileaccess', async (req, res) => {
     try {
+      console.log("Received file access data:", JSON.stringify(req.body, null, 2));
       const data = insertFileAccessActivitySchema.parse(req.body);
       const result = await storage.insertFileAccessActivity(data);
+      console.log("Successfully inserted file access:", result);
       res.json(result);
     } catch (error) {
       console.error("Error logging file access:", error);
-      res.status(400).json({ message: "Invalid file access data" });
+      if (error instanceof Error) {
+        console.error("Error details:", error.message);
+      }
+      res.status(400).json({ message: "Invalid file access data", error: error instanceof Error ? error.message : "Unknown error" });
     }
   });
 
@@ -167,12 +172,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Keystroke endpoints
   app.post('/api/keystrokes', async (req, res) => {
     try {
+      console.log("Received keystroke data:", JSON.stringify(req.body, null, 2));
       const data = insertKeystrokeActivitySchema.parse(req.body);
       const result = await storage.insertKeystrokeActivity(data);
+      console.log("Successfully inserted keystroke:", result);
       res.json(result);
     } catch (error) {
       console.error("Error logging keystrokes:", error);
-      res.status(400).json({ message: "Invalid keystroke data" });
+      if (error instanceof Error) {
+        console.error("Error details:", error.message);
+      }
+      res.status(400).json({ message: "Invalid keystroke data", error: error instanceof Error ? error.message : "Unknown error" });
     }
   });
 
