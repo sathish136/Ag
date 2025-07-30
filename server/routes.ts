@@ -55,12 +55,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Application usage endpoints
   app.post('/api/appusage', async (req, res) => {
     try {
+      console.log("Received app usage data:", JSON.stringify(req.body, null, 2));
       const data = insertApplicationUsageSchema.parse(req.body);
       const result = await storage.insertApplicationUsage(data);
+      console.log("Successfully inserted app usage:", result);
       res.json(result);
     } catch (error) {
       console.error("Error logging application usage:", error);
-      res.status(400).json({ message: "Invalid application usage data" });
+      if (error instanceof Error) {
+        console.error("Error details:", error.message);
+      }
+      res.status(400).json({ message: "Invalid application usage data", error: error instanceof Error ? error.message : "Unknown error" });
     }
   });
 

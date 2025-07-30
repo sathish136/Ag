@@ -149,15 +149,41 @@ export const monitoringSessions = pgTable("monitoring_sessions", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// Create insert schemas
-export const insertApplicationUsageSchema = createInsertSchema(applicationUsage);
-export const insertClipboardActivitySchema = createInsertSchema(clipboardActivity);
-export const insertCommunicationActivitySchema = createInsertSchema(communicationActivity);
-export const insertFileAccessActivitySchema = createInsertSchema(fileAccessActivity);
-export const insertKeystrokeActivitySchema = createInsertSchema(keystrokeActivity);
-export const insertNetworkActivitySchema = createInsertSchema(networkActivity);
-export const insertWebUsageActivitySchema = createInsertSchema(webUsageActivity);
-export const insertMonitoringSessionSchema = createInsertSchema(monitoringSessions);
+// Create insert schemas with proper timestamp handling
+export const insertApplicationUsageSchema = createInsertSchema(applicationUsage).extend({
+  startTime: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val),
+  endTime: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val).optional(),
+});
+
+export const insertClipboardActivitySchema = createInsertSchema(clipboardActivity).extend({
+  timestamp: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val),
+});
+
+export const insertCommunicationActivitySchema = createInsertSchema(communicationActivity).extend({
+  timestamp: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val),
+});
+
+export const insertFileAccessActivitySchema = createInsertSchema(fileAccessActivity).extend({
+  timestamp: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val),
+});
+
+export const insertKeystrokeActivitySchema = createInsertSchema(keystrokeActivity).extend({
+  timestamp: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val),
+});
+
+export const insertNetworkActivitySchema = createInsertSchema(networkActivity).extend({
+  timestamp: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val),
+});
+
+export const insertWebUsageActivitySchema = createInsertSchema(webUsageActivity).extend({
+  timestamp: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val),
+});
+
+export const insertMonitoringSessionSchema = createInsertSchema(monitoringSessions).extend({
+  startTime: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val),
+  endTime: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val).optional(),
+  lastActivity: z.string().datetime().or(z.date()).transform(val => typeof val === 'string' ? new Date(val) : val).optional(),
+});
 
 // Types
 export type UpsertUser = typeof users.$inferInsert;
