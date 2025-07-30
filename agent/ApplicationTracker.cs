@@ -76,10 +76,10 @@ namespace TeamSpy.Agent
             {
                  _apiClient.SendDataAsync("appusage", new
                 {
-                    Timestamp = DateTime.Now,
-                    ProcessName = _lastProcessName,
-                    WindowTitle = _lastWindowTitle,
-                    Duration = duration
+                    processName = _lastProcessName,
+                    windowTitle = _lastWindowTitle,
+                    usageDuration = duration,
+                    timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                 });
             }
         }

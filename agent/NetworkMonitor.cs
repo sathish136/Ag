@@ -60,11 +60,12 @@ namespace TeamSpy.Agent
 
                         _apiClient.SendDataAsync("network", new 
                         {
-                            Timestamp = DateTime.Now,
-                            User = currentUser,
-                            DestinationIp = remoteAddress.ToString(),
-                            Port = connection.RemoteEndPoint.Port,
-                            Domain = domain
+                            destinationHost = domain,
+                            destinationPort = connection.RemoteEndPoint.Port,
+                            destinationIp = remoteAddress.ToString(),
+                            protocol = "TCP",
+                            connectionState = "established",
+                            timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                         });
                     }
                 }

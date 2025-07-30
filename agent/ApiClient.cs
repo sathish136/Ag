@@ -9,7 +9,7 @@ namespace TeamSpy.Agent
     public class ApiClient
     {
         private readonly HttpClient _httpClient;
-                private const string BaseUrl = "https://a64d656d-096c-4409-84ad-fec3da239b5b-00-1au3m59282s70.worf.replit.dev/";
+                private const string BaseUrl = "https://a64d656d-096c-4409-84ad-fec3da239b5b-00-1au3m59282s70.worf.replit.dev/api/";
 
         public ApiClient()
         {

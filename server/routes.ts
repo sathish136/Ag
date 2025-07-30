@@ -154,6 +154,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post('/api/fileaccess', async (req, res) => {
     try {
       console.log("Received file access data:", JSON.stringify(req.body, null, 2));
+      console.log("Data type checks:", {
+        filePath: typeof req.body.filePath,
+        fileName: typeof req.body.fileName, 
+        operation: typeof req.body.operation,
+        timestamp: typeof req.body.timestamp,
+        rawBody: req.body
+      });
       const data = insertFileAccessActivitySchema.parse(req.body);
       const result = await storage.insertFileAccessActivity(data);
       console.log("Successfully inserted file access:", result);
